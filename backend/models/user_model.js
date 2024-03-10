@@ -1,7 +1,7 @@
 import mongoose, { model } from "mongoose"
 
 const userSchema = new mongoose.Schema({
-    fullName: {
+    fullname: {
         type: String,
         required: true
     },
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
         enum: ["male", "female"]
     },
 
-    profile: {
+    profileImage: {
         type: String,
         default: ""
     }
