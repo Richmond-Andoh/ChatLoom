@@ -3,7 +3,7 @@ import React from 'react'
 const Login = () => {
   return (
     <div className='items-start justify-center flex flex-col min-w-48 mx-auto'>
-      <div className='w-full p-6 rounded-lg shadow-2xl bg-zinc-900 bg-clip-padding backdrop-blur-sm backdrop-filter bg-opacity-0'>
+      <div className='w-full p-6 rounded-lg shadow-2xl bg-zinc-900 bg-clip-padding backdrop-blur-lg backdrop-filter bg-opacity-0'>
             <h1 className='text-3xl text-center font-semibold text-gray-300 mb-5'>
                 Login
                 <span className='text-blue-500 pl-3'>
