@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CheckGenderBox from './CheckGenderBox'
 import { Link } from 'react-router-dom'
+import useRegister from '../../hooks/useRegister'
 
 const Register = () => {
     
@@ -11,6 +12,8 @@ const Register = () => {
         confirmPassword: "",
         gender: "",
     })
+
+    const { loading, register } = useRegister()
 
     // handle input change
     const handleInputChange = (e) => {
@@ -23,15 +26,17 @@ const Register = () => {
 
     // handle checkBoxChange
 
-    const handleCheckboxChange = (e) => {
+    const handleCheckboxChange = () => {
        setFormData({...formData.gender})
     }
 
     // handle form submission
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
        e.preventDefault()
-       console.log("FormData submitted successfully", formData)
        
+       useRegister(formData)
+       console.log("FormData submitted successfully", formData)
+
        // clear form fields after submission
        setFormData({
         fullName: "",

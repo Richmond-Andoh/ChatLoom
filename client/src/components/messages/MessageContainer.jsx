@@ -1,17 +1,17 @@
 import React from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
-// import { BiMessageRoundedDetail } from "react-icons/bi";
+import { BiMessageRoundedDetail } from "react-icons/bi";
 import NoChatSelected from './NoChatSelected';
 
 
 const MessageContainer = () => {
-  const noChatSelected = true;
+  const noChatSelected = false;
 
   return (
     <div className="md:min-w-[550px] flex flex-col w-full">
        { noChatSelected ? <NoChatSelected /> : (
-         <>
+        <>
             {/* Header */}
             <div className='bg-gray-500 px-4 py-2 mb-2'>
               <span className='label-text'>To:</span>{" "}
@@ -21,7 +21,7 @@ const MessageContainer = () => {
           <Messages />
 
           <MessageInput />
-         </>
+        </>
        )
        }
     </div>
