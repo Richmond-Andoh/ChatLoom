@@ -1,4 +1,3 @@
-import React from 'react'
 import SearchInput from './SearchInput'
 import { SlLogout } from "react-icons/sl";
 import Chats from '../conversations/Chats';

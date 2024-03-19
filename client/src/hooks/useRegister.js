@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 const useRegister = () => {
     const [ loading, setLoading ] = useState(false);
 
-    const register = async({fullName, username, password, confirmPassword}) => {
-        const success = handleInputErrors({fullName, username, password, confirmPassword})
+    const register = async({fullName, username, password, confirmPassword, selectedGender}) => {
+        const success = handleInputErrors({fullName, username, password, confirmPassword, selectedGender})
         if(!success) return;
 
         setLoading(true);
@@ -14,7 +14,7 @@ const useRegister = () => {
             const res = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({fullName, username, password, confirmPassword})
+                body: JSON.stringify({fullName, username, password, confirmPassword, selectedGender})
             })
 
             const data = await res.json();

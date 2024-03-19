@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import useRegister from '../../hooks/useRegister'
 import CheckGenderBox from './CheckGenderBox'
 import { Link } from 'react-router-dom'
-import useRegister from '../../hooks/useRegister'
 
 const Register = () => {
     
@@ -10,7 +10,7 @@ const Register = () => {
         username: "",
         password: "",
         confirmPassword: "",
-        gender: "",
+        selectedGender: "",
     })
 
     const { loading, register } = useRegister()
@@ -26,15 +26,17 @@ const Register = () => {
 
     // handle checkBoxChange
 
-    const handleCheckboxChange = () => {
-       setFormData({...formData.gender})
+    const handleCheckboxChange = (gender) => {
+       setFormData({
+        ...formData,
+        selectedGender: gender})
     }
 
     // handle form submission
     const handleSubmit = async (e) => {
        e.preventDefault()
        
-       useRegister(formData)
+       await register(formData)
        console.log("FormData submitted successfully", formData)
 
        // clear form fields after submission
@@ -43,7 +45,7 @@ const Register = () => {
         username: "",
         password: "",
         confirmPassword: "",
-        gender: "",
+        selectedGender: "",
        })
     }
 
@@ -97,7 +99,7 @@ const Register = () => {
                         />
                     </label>
 
-                    <CheckGenderBox onCheckboxChange={handleCheckboxChange} selectedGender={formData.gender} />
+                    <CheckGenderBox onCheckboxChange={handleCheckboxChange} selectedGender={formData.selectedGender} />
                     
                     <Link to={"/login"} className='text-sm mt-3 hover:underline hover:text-blue-600 inline-block'>
                         {"Already"} have account

@@ -1,4 +1,3 @@
-import React from 'react'
 import { SlLogout } from 'react-icons/sl'
 
 const LogoutBtn = () => {
