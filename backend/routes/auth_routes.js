@@ -7,5 +7,4 @@ auth_route.post("/login", login)
 auth_route.post("/register", register)
 auth_route.post("/logout", logout)
 
-
 export default auth_route

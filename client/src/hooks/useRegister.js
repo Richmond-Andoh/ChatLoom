@@ -1,8 +1,11 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
-//import axios from "axios"
+import axios from "axios"
+import useAuthContext from "../context/Auth_Context.js"
+
 const useRegister = () => {
     const [ loading, setLoading ] = useState(false);
+    const { setAuthUser } = useAuthContext()
 
     const register = async({fullname, username, password, confirmPassword, gender}) => {
         const success = handleInputErrors({fullname, username, password, confirmPassword, gender})
@@ -11,15 +14,24 @@ const useRegister = () => {
         setLoading(true);
 
         try {
-            const res = await fetch("/api/auth/register", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({fullname, username, password, confirmPassword, gender})
+            const response = await axios.post("/api/auth/register", {
+                // method: "POST",
+                // headers: {"Content-Type": "application/json"},
+                // body: JSON.stringify(
+                fullname, username, password, confirmPassword, gender,
             })
 
-            const data = await res.json();
-            console.log(data);
+            const data = response.data; //await res.json();
 
+            if(data.error){
+                throw new Error(data.error)
+            }
+
+            // save to local storage
+            localStorage.setItem(JSON.stringify("chat-app", data));
+            setAuthUser(data);
+
+        
         } catch (error) {
             toast.error(error.message)
         }

@@ -40,9 +40,10 @@ export const register = async(req, res, next) => {
         });
 
         // save new user
-        jwtToken(newUser._id, res)
-        await newUser.save();
-        res.status(201).json({
+        if(newUser){
+            jwtToken(newUser._id, res)
+            await newUser.save();
+            res.status(201).json({
             Message: "User created successfully", 
             _id: newUser._id,
             fullname: newUser.fullname,
@@ -51,6 +52,9 @@ export const register = async(req, res, next) => {
             gender: newUser.gender,
             profileImage: newUser.profileImage
         });
+        } else {
+            return res.status(400).json({ error: "Invalid user details" })
+        }
     }
 }   catch (error) {
         console.log("Error in register controller", error.message);
