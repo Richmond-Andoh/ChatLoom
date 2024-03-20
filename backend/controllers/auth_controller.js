@@ -36,7 +36,7 @@ export const register = async(req, res, next) => {
             username,
             password: hashPassword,
             selectedGender,
-            profileImage: gender === "male" ? maleProfile : femaleProfile 
+            profileImage: selectedGender === "male" ? maleProfile : femaleProfile 
         });
 
         // save new user
