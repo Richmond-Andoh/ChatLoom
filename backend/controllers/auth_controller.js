@@ -5,9 +5,9 @@ import jwtToken from "../utils/jwt_token.js";
 export const register = async(req, res, next) => {
    try {
     if(req.body && req.body.fullName){
-            const { fullName, username, password, confirmPassword, selectedGender } = req.body;
+            const { fullname, username, password, confirmPassword, gender } = req.body;
         //check for empty fields
-        if(!fullName || !username || !password || !confirmPassword || !selectedGender) {
+        if(!fullname || !username || !password || !confirmPassword || !gender) {
             throw new Error("All fields are required");
         }
 
@@ -32,11 +32,11 @@ export const register = async(req, res, next) => {
 
         // create new user
         const newUser = new User({
-            fullName,
+            fullname,
             username,
             password: hashPassword,
-            selectedGender,
-            profileImage: selectedGender === "male" ? maleProfile : femaleProfile 
+            gender,
+            profileImage: gender === "male" ? maleProfile : femaleProfile 
         });
 
         // save new user
@@ -45,10 +45,10 @@ export const register = async(req, res, next) => {
         res.status(201).json({
             Message: "User created successfully", 
             _id: newUser._id,
-            fullName: newUser.fullname,
+            fullname: newUser.fullname,
             username: newUser.username,
             password: newUser.password,
-            selectedGender: newUser.selectedGender,
+            gender: newUser.gender,
             profileImage: newUser.profileImage
         });
     }

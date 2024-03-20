@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 const useRegister = () => {
     const [ loading, setLoading ] = useState(false);
 
-    const register = async({fullName, username, password, confirmPassword, selectedGender}) => {
-        const success = handleInputErrors({fullName, username, password, confirmPassword, selectedGender})
+    const register = async({fullname, username, password, confirmPassword, gender}) => {
+        const success = handleInputErrors({fullname, username, password, confirmPassword, gender})
         if(!success) return;
 
         setLoading(true);
@@ -14,7 +14,7 @@ const useRegister = () => {
             const res = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({fullName, username, password, confirmPassword, selectedGender})
+                body: JSON.stringify({fullname, username, password, confirmPassword, gender})
             })
 
             const data = await res.json();
@@ -35,8 +35,8 @@ const useRegister = () => {
 
 export default useRegister;
 
-function handleInputErrors({fullName, username, password, confirmPassword, selectedGender}){
-    if(!fullName || !username || !password || !confirmPassword || !selectedGender){
+function handleInputErrors({fullname, username, password, confirmPassword, gender}){
+    if(!fullname || !username || !password || !confirmPassword || !gender){
        toast.error("All fields must be filled");
        return false;
     };
