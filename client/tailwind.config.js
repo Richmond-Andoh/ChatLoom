@@ -15,9 +15,5 @@ export default {
 		extend: {},
 	},
 	// eslint-disable-next-line no-undef
-	plugins: [require("daisyui")],
-
-	server: {
-		port: 3000,
-	}
+	plugins: [require("daisyui")]
 };

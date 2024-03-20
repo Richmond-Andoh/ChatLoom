@@ -35,8 +35,8 @@ const useRegister = () => {
 
 export default useRegister;
 
-function handleInputErrors({fullName, username, password, confirmPassword}){
-    if(!fullName || !username || !password || !confirmPassword){
+function handleInputErrors({fullName, username, password, confirmPassword, selectedGender}){
+    if(!fullName || !username || !password || !confirmPassword || !selectedGender){
        toast.error("All fields must be filled");
        return false;
     };
