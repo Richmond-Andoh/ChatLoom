@@ -2,19 +2,26 @@ import Messages from './Messages'
 import MessageInput from './MessageInput'
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import NoChatSelected from './NoChatSelected';
+import useChat from '../../zustand_store/useChat';
+import { useEffect } from 'react';
 
 
 const MessageContainer = () => {
-  const noChatSelected = false;
+  const { selectedChat, setSelectedChat } = useChat();
 
+  useEffect(() => {
+
+    // unmount   or cleanup function
+    return () => setSelectedChat(null);
+  }, [ setSelectedChat ])
   return (
     <div className="md:min-w-[550px] flex flex-col w-full">
-       { noChatSelected ? <NoChatSelected /> : (
+       { !selectedChat ? <NoChatSelected /> : (
         <>
             {/* Header */}
             <div className='bg-gray-500 px-4 py-2 mb-2'>
               <span className='label-text'>To:</span>{" "}
-              <span className='text-info-500 px-4'>Luke Skywalker</span>
+              <span className='text-info-500 px-4'>{setSelectedChat.fullname}</span>
             </div>
           
           <Messages />
