@@ -13,7 +13,7 @@ const Register = () => {
         gender: "",
     })
 
-    const { register } = useRegister()
+    const {loading, register } = useRegister()
 
     // handle input change
     const handleInputChange = (e) => {
@@ -105,7 +105,11 @@ const Register = () => {
                     </Link>
                 </div>
                 <div className='px-7'>
-                    <button className="btn btn-md btn-active btn-primary w-full">Register</button>
+                    <button className="btn btn-md btn-active btn-primary w-full"
+                     disabled={loading}
+                    >
+                        {loading ? <span className="loading loading-spinner text-info"></span> : "Sign Up"}
+                    </button>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
 import axios from "axios"
-import useAuthContext from "../context/Auth_Context.js"
+import { useAuthContext } from "../context/Auth_Context";
 
 const useRegister = () => {
     const [ loading, setLoading ] = useState(false);

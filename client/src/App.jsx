@@ -14,8 +14,8 @@ const App = () => {
     <div className='flex p-4 h-screen items-center justify-center'>
       <Toaster position="top-center"/>
       <Routes>
-        <Route path="/" element= {<Home />}/>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element= {authUser ? <Home /> : <Navigate to={"/login"}/>} />
+        <Route path="/login" element={authUser ? <Navigate to={"/"} /> : <Login />} />
         <Route path="/register" element={authUser ? <Navigate to="/" /> : <Register />} />
       </Routes>
     </div>
