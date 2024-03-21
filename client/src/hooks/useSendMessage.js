@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import useChat from './useGetChat';
+import useChat from '../zustand_store/useChat';
 
 const useSendMessage = () => {
-   const [loading, setLoading ] = useState(false);
-   const { messages, setMessages, selectedChat } = useChat();
-
-   const sendMessage = async() => {
+  const [loading, setLoading ] = useState(false);
+  const{messages, setMessages, selectedChat } = useChat();
+  
+  const sendMessage = async() => {
     setLoading(true);
 
     try {
