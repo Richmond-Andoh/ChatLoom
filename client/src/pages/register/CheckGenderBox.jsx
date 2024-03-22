@@ -2,6 +2,7 @@
 const CheckGenderBox = ({onCheckboxChange, selectedGender}) => {
 
     const defaultSelectedGender = selectedGender || "";
+    
   return (
     <div className='flex mt-2'>
         <div className="form-control">
