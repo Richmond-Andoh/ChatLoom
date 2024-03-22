@@ -5,7 +5,7 @@ import dbconnection from "./db/dbconnection.js";
 import message_route from "./routes/message_routes.js";
 import cookieParser from "cookie-parser";
 import user_routes from "./routes/user_routes.js";
-const app = express();
+import { app, server } from "./socket_server/socket.js"
 
 dotenv.config();
 dbconnection();
@@ -19,4 +19,4 @@ app.use("/api/auth", auth_route)
 app.use("/api/messages", message_route)
 app.use("/api/users", user_routes)
 
-app.listen(PORT, () => console.log(`Server is running on port, ${PORT}`));
+server.listen(PORT, () => console.log(`Server is running on port, ${PORT}`));
