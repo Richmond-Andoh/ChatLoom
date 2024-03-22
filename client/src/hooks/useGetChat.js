@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import toast from "react-hot-toast";
 
-const useChat = () => {
+const useGetChat = () => {
    const [ loading, setLoading ]= useState(false);
    const [ chats, setChats ] = useState([]);
 
@@ -29,4 +29,4 @@ const useChat = () => {
    return { loading, chats }
 }
 
-export default useChat
+export default useGetChat

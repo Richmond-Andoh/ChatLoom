@@ -1,10 +1,10 @@
 import Chat from "./Chat"
-import useChat from "../../zustand_store/useChat"
 import { getRandomEmoji } from "../../utils/userEmojis";
+import useGetChat from "../../hooks/useGetChat";
 
 const Chats = () => {
 
-  const { loading, chats } = useChat();
+  const { loading, chats } = useGetChat();
   return (
     <div className='flex flex-col overflow-auto'>
         
