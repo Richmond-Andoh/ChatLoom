@@ -3,7 +3,7 @@ import { useAuthContext } from "./Auth_Context";
 
 const SocketContext = createContext();
 
-const useSocketContext = () => {
+export const useSocketContext = () => {
     return useContext(SocketContext);
 }
 
@@ -22,6 +22,12 @@ export const SocketContextProvider = ({children}) => {
             });
 
             setSocket(socket);
+            
+            // get online users
+
+            socket.on("getOlineUsers", (users) => {
+                setOnlineUsers(users);
+            })
 
             return () => socket.close();
         }
@@ -34,7 +40,7 @@ export const SocketContextProvider = ({children}) => {
         }
 
 
-    }, [])
+    }, [authUser])
 
 
 

@@ -1,3 +1,4 @@
+import { useSocketContext } from "../../context/Socket_Context";
 import useChat from "../../zustand_store/useChat"
 
 const Chat = ({chat, lastIndex, emoji}) => {
@@ -5,6 +6,9 @@ const Chat = ({chat, lastIndex, emoji}) => {
   const { selectedChat, setSelectedChat } = useChat();
 
   const isSelected = selectedChat._id === chat._id;
+
+  const { onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(chat._id);
   return (
     <>
         <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer
@@ -12,7 +16,7 @@ const Chat = ({chat, lastIndex, emoji}) => {
         `}>
           onClick = {() => setSelectedChat(chat)}
           
-          <div className="avatar online">
+          <div className={`avata ${isOnline ? "online" : ""}`}>
             <div className="w-12 rounded-full">
               <img src={chat.profileImage} />
             </div>

@@ -12,6 +12,11 @@ const io = new Server(server, {
     }
 });
 
+// enable real time conversation
+export const getReceiverSocketId = (receiverId) => {
+    return userSocketMap(receiverId);
+}
+
 const userSocketMap = {}; //{userId: socket}
 
 io.on("connection", (socket) => {
