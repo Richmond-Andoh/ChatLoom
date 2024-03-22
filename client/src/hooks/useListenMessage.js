@@ -8,6 +8,11 @@ const useListenMessage = () => {
 
     useEffect(() => {
         socket.on("newMessage", newMessage => {
+            newMessage.shouldShake = true; // Add shaking animation to the message if it's not from me (the user)
+            
+            // add message receive notification sound
+            const notificationSound = new Audio();
+            notificationSound.play();
             setMessages([...messages, newMessage]);
         })
 
