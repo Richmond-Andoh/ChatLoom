@@ -10,7 +10,7 @@ const Register = () => {
         username: "",
         password: "",
         confirmPassword: "",
-        gender: "",
+        gender: null,
     })
 
     const {loading, register } = useRegister()
@@ -29,12 +29,12 @@ const Register = () => {
     const handleCheckboxChange = (selectedGender) => {
        setFormData({
         ...formData,
-        gender: selectedGender})
+        gender: formData.gender === selectedGender ? null : selectedGender })
     }
 
     // handle form submission
     const handleSubmit = async (e) => {
-       e.preventDefault()
+       e.preventDefault();
        await register(formData)
        //console.log("FormData submitted successfully", formData)
 
@@ -44,7 +44,7 @@ const Register = () => {
         username: "",
         password: "",
         confirmPassword: "",
-        gender: "",
+        gender: null,
        })
     }
 
@@ -106,9 +106,9 @@ const Register = () => {
                 </div>
                 <div className='px-7'>
                     <button className="btn btn-md btn-active btn-primary w-full"
-                     disabled={loading}
+                     //disabled={loading}
                     >
-                        {loading ? <span className="loading loading-spinner text-info"></span> : "Sign Up"}
+                     Sign Up  {/* Sign Up {loading ? <span className="loading loading-spinner text-info"></span> : "Sign Up"} */}
                     </button>
                 </div>
             </form>

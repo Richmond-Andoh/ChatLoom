@@ -14,6 +14,7 @@ const useGetChat = () => {
                 if(data.error){
                     throw new Error(data.error);
                 }
+                setChats(data);
             } catch (error) {
                 toast.error(error.message);
                 
