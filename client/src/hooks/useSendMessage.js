@@ -5,7 +5,7 @@ const useSendMessage = () => {
   const [loading, setLoading ] = useState(false);
   const{messages, setMessages, selectedChat } = useChat();
   
-  const sendMessage = async() => {
+  const sendMessage = async(message) => {
     setLoading(true);
 
     try {
@@ -13,7 +13,7 @@ const useSendMessage = () => {
         const res = await fetch(`/api/messages/send/${selectedChat._id}`, {
            method: "POST",
            headers: {"Content-Type": "application/json"},
-           body: JSON.stringify({messages})
+           body: JSON.stringify({message})
         })
 
         const data = res.json();
@@ -22,7 +22,7 @@ const useSendMessage = () => {
             throw new Error(data.error);
         }
 
-        setMessages({...messages, data})
+        setMessages([...messages, data])
     } catch (error) {
         toast.error(error.message)
     }

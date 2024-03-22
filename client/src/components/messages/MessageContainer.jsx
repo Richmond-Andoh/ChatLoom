@@ -21,7 +21,7 @@ const MessageContainer = () => {
             {/* Header */}
             <div className='bg-gray-500 px-4 py-2 mb-2'>
               <span className='label-text'>To:</span>{" "}
-              <span className='text-info-500 px-4'>{setSelectedChat.fullname}</span>
+              <span className='text-info-500 px-4'>{selectedChat.fullname}</span>
             </div>
           
           <Messages />

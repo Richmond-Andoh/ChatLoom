@@ -1,6 +1,7 @@
 import Chat from "./Chat"
 import useChat from "../../zustand_store/useChat"
 import { getRandomEmoji } from "../../utils/userEmojis";
+
 const Chats = () => {
 
   const { loading, chats } = useChat();

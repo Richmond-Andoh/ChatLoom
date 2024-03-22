@@ -6,18 +6,22 @@ const MessageInput = () => {
    const [ message, setMessage ] = useState("")
    const { loading, sendMessage } = useSendMessage();
 
+   // handle messaeg submission
   const handleSendMessage = async(e) => {
     e.preventDefault();
 
+    // prevent empty message from sending
     if(!message) return;
     await sendMessage(message);
+
+    // clear message field after submission
     sendMessage("");
   };
   
   return (
     <form className='px-4 my-3' onSubmit={handleSendMessage}>
         <div className='w-full relative'>
-          <input type="text" value={message} onChange={(e) => sendMessage(e.target.value)} placeholder="Send a message" className="me-7 input block bg-gray-500 p-3 rounded-lg text-sm text-white w-full" />
+          <input type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Send a message" className="me-7 input block bg-gray-500 p-3 rounded-lg text-sm text-white w-full" />
 
           <button type="submit" className="absolute inset-y-0 flex end-0 items-center pe-3 text-2xl">
            {loading ?  <span className="loading loading-spinner text-info"></span> : <IoSendSharp /> }
