@@ -1,4 +1,5 @@
 import { useAuthContext } from "../../context/Auth_Context";
+import { extractTime } from "../../utils/extractedTime";
 import useChat from "../../zustand_store/useChat";
 
 const Message = ({ message }) => {
@@ -10,6 +11,7 @@ const Message = ({ message }) => {
   const chatClassName = myMessage ? "chat-end" : "chat-start";
   const myProfileImg = myMessage ? authUser.myProfileImg : selectedChat?.ProfileImg;
   const chatBgColor = myMessage ? "chat-bubble-secondary" : "";
+  const timeFormat = extractTime(message.createdAt);
   return (
     <>
       <div className={`chat ${chatClassName}`}>
@@ -21,7 +23,7 @@ const Message = ({ message }) => {
        
         <div className={`chat-bubble text-white ${chatBgColor}`}>{message.message}</div>
         <div className="chat-footer opacity-50">
-          
+          {timeFormat}
         </div>
       </div>
       {/* <div className="chat chat-end">
