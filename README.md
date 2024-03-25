@@ -34,6 +34,7 @@ ChatLoom is a real-time chat application built using the MERN (MongoDB, Express.
 
 To run ChatLoom locally, follow these steps:
 
+```
 1. Clone the repository: `git clone <repository-url>`
 2. Navigate to the project directory: `cd chatloom`
 3. Install dependencies for both frontend and backend:
@@ -45,6 +46,8 @@ To run ChatLoom locally, follow these steps:
    - Frontend: `cd client && npm start`
    - Backend: `cd server && npm start`
 6. Access the application in your web browser at `http://localhost:3000`.
+
+   ```
 
 ## Contributing
 
