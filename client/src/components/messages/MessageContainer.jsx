@@ -1,6 +1,6 @@
 import Messages from './Messages'
 import MessageInput from './MessageInput'
-import { BiMessageRoundedDetail } from "react-icons/bi";
+// import { BiMessageRoundedDetail } from "react-icons/bi";
 import NoChatSelected from './NoChatSelected';
 import useChat from '../../zustand_store/useChat';
 import { useEffect } from 'react';
