@@ -27,6 +27,7 @@ ChatLoom is a real-time chat application built using the MERN (MongoDB, Express.
 ## Screenshots
 
 ![Login Page](/client/public/screenshot.png)
+
 ![Register Page](/client/public/screenshot1.png)
 
 ## Getting Started
